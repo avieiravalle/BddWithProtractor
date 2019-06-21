@@ -1,16 +1,22 @@
 exports.config = {
     directConnect: true,
+    //highlightDelay: 3000,
     
     restartBrowserBetweenTests: false,
     getPageTimeout: 50000,
     allScriptsTimeout: 30000,
 
     capabilities: {
-
-        shardTestFiles: true,
-        "browserName": 'chrome'
+      shardTestFiles: true,
+      browserName: 'chrome',
+      chromeOptions: {
+        args: [
+          "--headless",
+          "--disable-gpu",
+          "--window-size=1024,768",
+        ],
+      },
     },
-
     cucumberOpts: {
         require: [
             'features/stepDefinitions/google.js' // accepts a glob
